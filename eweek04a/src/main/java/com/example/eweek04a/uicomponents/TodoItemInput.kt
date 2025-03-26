@@ -28,7 +28,7 @@ fun TodoItemInput(todoList: MutableList<Item>, modifier: Modifier = Modifier) {
         Button(onClick = {
             val currentTime = LocalDateTime.now()
                 .format(DateTimeFormatter.ofPattern("MM-dd HH:mm"))
-            todoList.add(Item(textFieldState, currentTime))
+            todoList.add(Item(textFieldState, currentTime)) // todolist에 추가
         }) { Text("추가") }
     }
 }
