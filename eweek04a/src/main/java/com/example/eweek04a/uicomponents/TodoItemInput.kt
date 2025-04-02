@@ -23,12 +23,14 @@ fun TodoItemInput(todoList: MutableList<Item>, modifier: Modifier = Modifier) {
         TextField(
             value = textFieldState,
             onValueChange = { text: String -> textFieldState = text },
-            placeholder = { Text("할 일을 입력하세요.")}
+            placeholder = { Text("할 일을 입력하세요.") }
         )
         Button(onClick = {
-            val currentTime = LocalDateTime.now()
-                .format(DateTimeFormatter.ofPattern("MM-dd HH:mm"))
-            todoList.add(Item(textFieldState, currentTime)) // todolist에 추가
+            if (textFieldState != "") {
+                val currentTime = LocalDateTime.now()
+                    .format(DateTimeFormatter.ofPattern("MM-dd HH:mm"))
+                todoList.add(Item(textFieldState, currentTime)) // todolist에 추가
+            }
         }) { Text("추가") }
     }
 }
