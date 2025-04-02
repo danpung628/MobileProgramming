@@ -1,6 +1,7 @@
 package com.example.eweek04a.uicomponents
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -12,9 +13,9 @@ val todoList = remember {
     //mutableStateListOf<Item>()
     TodoItemFactory.makeTodoList()
 }
-    Column {
+    Column ( modifier = Modifier.fillMaxSize()){
         TodoListTitle()
-        TodoList(todoList)
+        TodoList(todoList, modifier = Modifier.weight(1f))
         TodoItemInput(todoList)
     }
 }

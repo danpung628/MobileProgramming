@@ -7,7 +7,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
+import androidx.compose.material3.Switch
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -23,7 +28,14 @@ fun TodoList(todoList: MutableList<Item>, modifier: Modifier = Modifier) {
             .fillMaxWidth()
             .verticalScroll(scrollState)
     ) {
-        todoList.forEachIndexed { index, item ->
+        var checked by remember { mutableStateOf(false) }
+        Switch(checked = checked, onCheckedChange = { checked = it })
+
+        val filteredList = if(checked){
+            todoList.filter { it.status== TodoStatus.PENDING }
+        } else todoList
+
+        filteredList.forEachIndexed { index, item ->
             Card(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -31,11 +43,12 @@ fun TodoList(todoList: MutableList<Item>, modifier: Modifier = Modifier) {
             ) {
                 Row {
                     TodoCheckBox(checked = item.status == TodoStatus.COMPLETED) { isChecked ->
-                        todoList[index] = item.copy(
+
+                        val updateItem = item.copy(
                             status = if (isChecked) TodoStatus.COMPLETED
                             else TodoStatus.PENDING
                         )
-
+                        todoList[todoList.indexOf(item)] = updateItem
                     }
                     TodoItem(item = item)
                 }

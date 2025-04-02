@@ -22,3 +22,4 @@ dependencyResolutionManagement {
 rootProject.name = "MylecE"
 include(":app")
 include(":eweek04a")
+include(":eweek05a")
