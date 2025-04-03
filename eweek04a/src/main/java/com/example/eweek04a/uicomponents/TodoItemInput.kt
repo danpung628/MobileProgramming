@@ -3,6 +3,7 @@ package com.example.eweek04a.uicomponents
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -23,19 +24,30 @@ import java.time.format.DateTimeFormatter
 @Composable
 fun TodoItemInput(todoList: MutableList<Item>, modifier: Modifier = Modifier) {
     var textFieldState by remember { mutableStateOf("") }
-    Row (verticalAlignment = Alignment.CenterVertically,modifier = Modifier.fillMaxWidth().padding(vertical = 8.dp)){
+    Row(
+        verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()
+    ) {
         TextField(
             value = textFieldState,
             onValueChange = { text: String -> textFieldState = text },
             placeholder = { Text("할 일을 입력하세요.") },
+            modifier = Modifier
+                .weight(1f)
+                .padding(end = 8.dp)
         )
-        Button(modifier= Modifier.padding(horizontal = 8.dp),onClick = {
-            if (textFieldState != "") {
-                val currentTime = LocalDateTime.now()
-                    .format(DateTimeFormatter.ofPattern("MM-dd HH:mm"))
-                todoList.add(Item(textFieldState, currentTime)) // todolist에 추가
+        Button(
+            modifier = Modifier.size(width = 80.dp, height = 48.dp),
+            onClick = {
+                if (textFieldState != "") {
+                    val currentTime = LocalDateTime.now()
+                        .format(DateTimeFormatter.ofPattern("MM-dd HH:mm"))
+                    todoList.add(Item(textFieldState, currentTime))
+                    textFieldState = "" // 입력 후 텍스트 필드 초기화
+                }
             }
-        }) { Text("추가") }
+        ) {
+            Text("추가")
+        }
     }
 }
 
