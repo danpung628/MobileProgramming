@@ -8,7 +8,7 @@ object TodoItemFactory {
         Item("오전 운동", "02-01 06:30", TodoStatus.PENDING),
         Item("책 읽기", "02-01 08:30", TodoStatus.PENDING),
         Item("점심 먹기", "02-01 12:30", TodoStatus.COMPLETED),
-        Item("모프 공부하기", "02-01 17:30", TodoStatus.PENDING)
+        Item("202111281 노원우", "02-01 17:30", TodoStatus.PENDING)
     )
 }
 
