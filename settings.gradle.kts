@@ -23,3 +23,5 @@ rootProject.name = "MylecE"
 include(":app")
 include(":eweek04a")
 include(":eweek05a")
+include(":eweek06a")
+include(":dolldressup")
