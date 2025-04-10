@@ -35,6 +35,6 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Composable
 fun GreetingPreview() {
     MylecETheme {
-        Greeting("Android")
+        MainScreen()
     }
 }
