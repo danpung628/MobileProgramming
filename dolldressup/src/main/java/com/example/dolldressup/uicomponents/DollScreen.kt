@@ -3,10 +3,12 @@ package com.example.dolldressup.uicomponents
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.unit.dp
 import com.example.dolldressup.R
 import com.example.dolldressup.model.ImageData
 
@@ -14,7 +16,7 @@ import com.example.dolldressup.model.ImageData
 @Composable
 fun DollScreen(modifier: Modifier = Modifier, imageList: MutableList<ImageData>) {
     Box(
-        modifier = modifier,
+        modifier = modifier.padding(50.dp),
         contentAlignment = Alignment.Center
     ) {
         Image(
