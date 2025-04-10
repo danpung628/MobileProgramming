@@ -9,7 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.eweek06a.ui.theme.MylecETheme
-import com.example.week06.uicomponents.MainScreen
+import com.example.eweek06a.uicomponents.MainScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
